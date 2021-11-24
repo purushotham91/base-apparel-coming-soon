@@ -1,0 +1,14 @@
+{
+  "name": "base-apparel",
+  "version": "1.0.0",
+  "description": "Coming soon page for base apparel",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass -w scss/styles.scss css/style.css recursive"
+  },
+  "author": "Purushotham",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^6.0.1"
+  }
+}

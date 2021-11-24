@@ -1,0 +1,194 @@
+// Color Variables
+
+// ### Primary
+$desaturatedRed: hsl(0, 36%, 70%);
+$softRed: hsl(0, 93%, 68%);
+
+// ### Neutral
+
+$darkGrayishRed: hsl(0, 6%, 24%);
+
+// ### Gradients
+
+// - Linear, 135deg, from hsl(0, 0%, 100%), to hsl(0, 100%, 98%)
+// - Linear, 135deg, from hsl(0, 80%, 86%), to hsl(0, 74%, 74%)
+// button Gradient colors
+$btnGradientLow: hsl(0, 80%, 86%);
+$btnGradientHigh: hsl(0, 74%, 74%);
+
+// Mixins
+
+@mixin globalReset {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin grid {
+  display: grid;
+}
+
+@mixin grid2Cols {
+  grid-template-columns: 1fr 1fr;
+}
+
+@mixin gird1Col {
+  grid-template-columns: 1fr;
+}
+
+@mixin flex {
+  display: flex;
+}
+
+@mixin GlobalFontFamily {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+* {
+  @include globalReset();
+  box-sizing: border-box;
+}
+
+// functions
+
+body {
+  @include GlobalFontFamily();
+}
+
+.container {
+  @include grid();
+  @include grid2Cols();
+  column-gap: 3rem;
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+
+.data {
+  @include flex();
+  flex-direction: column;
+
+  & h1 {
+    margin-top: 7rem;
+    font-weight: 600;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    font-size: 5rem;
+    line-height: 1;
+    color: $darkGrayishRed;
+    margin-bottom: 2rem;
+
+    & div {
+      color: $desaturatedRed;
+      font-weight: 300;
+    }
+  }
+  & .info {
+    font-weight: 400;
+    color: $desaturatedRed;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+
+  & form {
+    @include flex();
+    border: 1px solid lighten($color: $softRed, $amount: 20%);
+
+    width: 70%;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: relative;
+
+    & input {
+      flex-grow: 1;
+
+      border: none;
+
+      &::placeholder {
+        color: lighten($color: $softRed, $amount: 20%);
+      }
+    }
+    & input:focus,
+    & input:active {
+      outline: none;
+    }
+
+    & button {
+      background: linear-gradient(to right, $btnGradientLow, $btnGradientHigh);
+      border: none;
+      width: 25%;
+      height: 3rem;
+      border-radius: 50px;
+
+      padding: 1rem 2rem;
+
+      position: absolute;
+      bottom: 0;
+      right: -10px;
+    }
+
+    & button:hover,
+    & button:active {
+      transform: translateY(-3px);
+      box-shadow: 3px 3px 3px $desaturatedRed;
+    }
+  }
+}
+
+.heroPicture {
+  & img {
+    height: 90%;
+  }
+  grid-row: 1 / span 2;
+  grid-column: 2;
+}
+
+.errorIcon {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 4rem;
+}
+.errorText {
+  padding: 0.7rem;
+  color: $softRed;
+  font-weight: 500;
+  font-size: 0.8rem;
+
+  visibility: hidden;
+}
+
+// Media Queries
+@media (max-width: 500px) {
+  .container {
+    width: 400px;
+    @include gird1Col();
+    margin: 0;
+    margin-bottom: 3rem;
+    padding: 1rem;
+  }
+  body {
+    text-align: center;
+  }
+
+  .heroImg {
+    width: 100%;
+  }
+
+  .heroPicture {
+    grid-row: 2;
+    grid-column: 1;
+    margin-top: 2rem;
+  }
+  .data {
+    justify-content: center;
+    align-items: center;
+  }
+}
+/* attribution */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
