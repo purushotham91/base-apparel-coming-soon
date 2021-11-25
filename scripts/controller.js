@@ -15,7 +15,7 @@ inputForm.addEventListener("input", function (e) {
 });
 
 const isEmailValid = function (email) {
-  if (email.includes("@") && email.includes(".")) {
+  if ((email.includes("@") && email.includes(".")) || email === "") {
     return true;
   }
   return false;

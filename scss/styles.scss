@@ -57,8 +57,8 @@ body {
 .container {
   @include grid();
   @include grid2Cols();
-  column-gap: 3rem;
-  width: 1000px;
+  column-gap: 8rem;
+  width: 1100px;
   margin: 0 auto;
   margin-top: 5rem;
 }
